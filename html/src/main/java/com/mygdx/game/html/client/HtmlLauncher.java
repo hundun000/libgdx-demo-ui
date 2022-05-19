@@ -1,9 +1,9 @@
-package com.broken_e.ui.testapp.client;
+package com.mygdx.game.html.client;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.broken_e.ui.testapp.TestApp;
+import com.mygdx.game.core.MyGdxGame;
 
 public class HtmlLauncher extends GwtApplication {
 
@@ -14,6 +14,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener createApplicationListener() {
-            return new TestApp();
+            return new MyGdxGame();
         }
 }

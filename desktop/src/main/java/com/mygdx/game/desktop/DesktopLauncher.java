@@ -8,6 +8,6 @@ import com.mygdx.game.core.MyGdxGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 	    Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-		new Lwjgl3Application(new MyGdxGame(), config);
+		new Lwjgl3Application(new MyGdxGame(new DesktopPreferencesSaveTool("demo-desktop-save")), config);
 	}
 }

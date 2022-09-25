@@ -1,9 +1,5 @@
 package com.mygdx.game.core.util.save;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 

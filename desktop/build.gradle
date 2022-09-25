@@ -1,7 +1,7 @@
 
 
 sourceSets.main.resources.srcDirs += [ "../assets" ]
-project.ext.mainClassName = 'com.broken_e.ui.testapp.desktop.Lwjgl3Launcher'
+project.ext.mainClassName = 'com.mygdx.game.desktop.DesktopLauncher'
 eclipse.project.name = appName + '-desktop'
 
 project.ext.assetsDir = new File("../assets")

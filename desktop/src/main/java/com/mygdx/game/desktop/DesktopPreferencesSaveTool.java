@@ -5,8 +5,9 @@ import java.io.IOException;
 import com.badlogic.gdx.Gdx;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.mygdx.game.core.data.RootSaveData;
-import com.mygdx.game.core.util.save.AbstractSaveDataSaveTool;
+import com.mygdx.game.core.data.MyRootSaveData;
+
+import hundun.gdxgame.corelib.base.util.save.AbstractSaveDataSaveTool;
 
 
 
@@ -14,7 +15,7 @@ import com.mygdx.game.core.util.save.AbstractSaveDataSaveTool;
  * @author hundun
  * Created on 2021/11/10
  */
-public class DesktopPreferencesSaveTool extends AbstractSaveDataSaveTool {
+public class DesktopPreferencesSaveTool extends AbstractSaveDataSaveTool<MyRootSaveData> {
     
     private ObjectMapper objectMapper;
     
@@ -36,7 +37,7 @@ public class DesktopPreferencesSaveTool extends AbstractSaveDataSaveTool {
 
 
     @Override
-    public void saveRootSaveData(RootSaveData saveData) {
+    public void writeRootSaveData(MyRootSaveData saveData) {
         try {
             preferences.putString(ROOT_KEY, objectMapper.writeValueAsString(saveData));
             preferences.flush();
@@ -49,10 +50,10 @@ public class DesktopPreferencesSaveTool extends AbstractSaveDataSaveTool {
 
 
     @Override
-    public RootSaveData loadRootSaveData() {
+    public MyRootSaveData readRootSaveData() {
         try {
             String date = preferences.getString(ROOT_KEY);
-            RootSaveData saveData = objectMapper.readValue(date, RootSaveData.class);
+            MyRootSaveData saveData = objectMapper.readValue(date, MyRootSaveData.class);
             return saveData;
         } catch (IOException e) {
             Gdx.app.error(getClass().getSimpleName(), "load() error", e);

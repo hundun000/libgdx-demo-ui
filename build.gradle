@@ -29,7 +29,8 @@ allprojects {
         appName = 'libgdx-demo-ui'
         gwtFrameworkVersion = '2.8.2'
         
-        gdxVersion = '1.9.12'
+        gdxVersion = '1.10.0'
+        hundunLibVersion = 'cd43a1f9eb'
 	}
 	
 	
@@ -40,18 +41,14 @@ subprojects {
 	version = '0.0.1-SNAPSHOT'
 	
 	repositories {
-        mavenLocal()
         mavenCentral()
-        google()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'https://jitpack.io' }
 	}
 }
 
 project(":core") {
 	dependencies {
-		api "com.badlogicgames.gdx:gdx:$gdxVersion"
+		api "com.github.hundun000:libgdx-hundun-lib:$hundunLibVersion"
 		
 		compileOnly 'org.projectlombok:lombok:1.18.4'
 		annotationProcessor 'org.projectlombok:lombok:1.18.4'
@@ -75,6 +72,9 @@ project(":html") {
 
 	dependencies {
 		implementation project(':core')
+		
+		implementation "com.github.hundun000:libgdx-hundun-lib:$hundunLibVersion:sources"
+		
 		implementation "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
 		implementation "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
 		implementation "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"

@@ -4,20 +4,22 @@ package com.mygdx.game.html;
 import com.badlogic.gdx.Gdx;
 import com.github.nmorel.gwtjackson.client.ObjectMapper;
 import com.google.gwt.core.client.GWT;
-import com.mygdx.game.core.data.RootSaveData;
-import com.mygdx.game.core.util.save.AbstractSaveDataSaveTool;
+import com.mygdx.game.core.data.MyRootSaveData;
+
+import hundun.gdxgame.corelib.base.util.save.AbstractSaveDataSaveTool;
+
 
 
 /**
  * @author hundun
  * Created on 2021/11/10
  */
-public class GwtPreferencesSaveTool extends AbstractSaveDataSaveTool {
+public class GwtPreferencesSaveTool extends AbstractSaveDataSaveTool<MyRootSaveData> {
 
     
     private SaveDataMapper objectMapper;
     
-    public static interface SaveDataMapper extends ObjectMapper<RootSaveData> {}
+    public static interface SaveDataMapper extends ObjectMapper<MyRootSaveData> {}
     
     
     public GwtPreferencesSaveTool(String preferencesName) {
@@ -27,7 +29,7 @@ public class GwtPreferencesSaveTool extends AbstractSaveDataSaveTool {
 
 
     @Override
-    public void saveRootSaveData(RootSaveData saveData) {
+    public void writeRootSaveData(MyRootSaveData saveData) {
         try {
             preferences.putString(ROOT_KEY, objectMapper.write(saveData));
             preferences.flush();
@@ -40,11 +42,11 @@ public class GwtPreferencesSaveTool extends AbstractSaveDataSaveTool {
 
 
     @Override
-    public RootSaveData loadRootSaveData() {
+    public MyRootSaveData readRootSaveData() {
 
         try {
             String date = preferences.getString(ROOT_KEY);
-            RootSaveData saveData = objectMapper.read(date);
+            MyRootSaveData saveData = objectMapper.read(date);
             return saveData;
         } catch (Exception e) {
             Gdx.app.error(getClass().getSimpleName(), "load() error", e);
